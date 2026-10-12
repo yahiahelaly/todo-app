@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="todo-card">
+            <div class="header">
+                <h1 id="greeting">Hi, User</h1>
+                <form action="/logout" method="POST" class="logout-form">
+                    <button type="submit" class="btn btn-secondary">Log out</button>
+                </form>
+            </div>
+            
+            <div class="add-todo-section">
+                <form id="addTodoForm" class="add-todo-form">
+                    <input type="text" id="newTodo" name="title" placeholder="What needs to be done?" maxlength="200">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+                <span class="error" id="newTodoError"></span>
+            </div>
+
+           <div class="task-counter">
+    Open Tasks: <span id="openTasksCount">0</span>
+</div>
+
+<div id="todoList" class="todo-list">
+    <!-- Todos will be loaded here -->
+</div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <p>No to-dos yet. Add one above!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Edit To-Do</h2>
+            <form id="editTodoForm">
+                <input type="hidden" id="editTodoId">
+                <div class="form-group">
+                    <label for="editTitle">Title</label>
+                    <input type="text" id="editTitle" name="title" maxlength="200">
+                    <span class="error" id="editTitleError"></span>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Delete To-Do</h2>
+            <p>Are you sure you want to delete this to-do?</p>
+            <div class="modal-buttons">
+                <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+                <button type="button" class="btn btn-secondary" id="cancelDelete">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="list.js"></script>
+</body>
+</html>
